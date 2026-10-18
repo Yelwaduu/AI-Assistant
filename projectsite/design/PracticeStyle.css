@@ -1,11 +1,22 @@
+:root {
+    --color-deep: #0D1B2A;
+    --color-secondary: #1B263B;
+    --color-blue: #415A77;
+    --color-sage: #778D7A;
+    --color-sand: #D4C4A8;
+    --color-cream: #F4F1DE;
+}
+
 .message-container {
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: verdana;
     min-height: 30vh;
-
-     animation: fade-up 0.7s;
+    padding: 28px 20px;
+    position: relative;
+    z-index: 1;
+    animation: fade-up 0.7s;
     animation-timing-function: ease-in-out;
 }
 
@@ -13,30 +24,42 @@
     width: 100%;
     max-width: 750px;
     box-sizing: border-box;
-    padding: 20px;
+    padding: 28px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    border: 1px solid var(--color-sand);
+    border-radius: 20px;
+    background: var(--color-cream);
+    box-shadow: 0 18px 35px rgba(13, 27, 42, 0.24), 0 4px 10px rgba(13, 27, 42, 0.12);
+    color: var(--color-deep);
 
     button {
         padding: 10px 20px;
-        background-color: #11212D;
-        color: white;
+        background-color: var(--color-sage);
+        color: var(--color-deep);
         border: none;
         border-radius: 5px;
         cursor: pointer;
     }
 
     button:hover {
-        background-color: #CCD0CF;
-        color: #11212D;
+        background-color: var(--color-sand);
+        color: var(--color-deep);
     }
 
     input {
         flex: 1;                  /* fills the leftover space in the row */
         padding: 10px;
-        border: 1px solid #11212D;
+        border: 1px solid var(--color-blue);
         border-radius: 5px;
+        background: var(--color-cream);
+        color: var(--color-deep);
+    }
+
+    input:focus {
+        outline: 2px solid var(--color-sage);
+        outline-offset: 2px;
     }
 
     p {
@@ -57,12 +80,50 @@
     padding-top: 10px;
 }
 
+.input-wrapper {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+}
+
+.input-wrapper input {
+    box-sizing: border-box;
+    width: 100%;
+    padding-right: 36px;
+}
+
+.input-wrapper .clear-btn {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translateY(-50%);
+    padding: 2px 6px;
+    background: transparent;
+    color: var(--color-sage);
+}
+
+.input-wrapper .clear-btn svg {
+    display: block;
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.5;
+}
+
+.input-wrapper .clear-btn:hover {
+    background: transparent;
+    color: var(--color-sage);
+}
+
 .nav-container {
     padding: 20px;
-    background-color: #11212D;
+    background-color: var(--color-deep);
 
     img {
-        background-color: white;
+        background-color: var(--color-cream);
     }
 
     animation: fade-in 0.5s;
@@ -74,7 +135,7 @@
     align-items: center;
     gap: 20px;
     font-family: verdana;
-    color: #CCD0CF;
+    color: var(--color-cream);
     padding-left: 20px;
 
     h2 {
@@ -90,12 +151,65 @@
         border: none;
         background: none;
         cursor: pointer;
-        color: white;
+        color: var(--color-sand);
     }
 }
 
 body {
     margin: 0;
+    min-height: 100vh;
+    background: var(--color-cream);
+    overflow-x: hidden;
+}
+
+.fish-background {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.fish {
+    position: absolute;
+    left: -16vw;
+    width: clamp(64px, 9vw, 120px);
+    fill: rgba(65, 90, 119, 0.18);
+    animation: fish-swim 38s linear infinite;
+}
+
+.fish circle {
+    fill: var(--color-deep);
+}
+
+.fish-one {
+    top: 24%;
+}
+
+.fish-two {
+    top: 64%;
+    width: clamp(48px, 6vw, 82px);
+    fill: rgba(119, 141, 122, 0.34);
+    animation: fish-swim-back 31s linear infinite;
+    animation-delay: -17s;
+}
+
+.fish-three {
+    top: 82%;
+    width: clamp(38px, 5vw, 68px);
+    fill: rgba(212, 196, 168, 0.4);
+    animation-duration: 46s;
+    animation-delay: -29s;
+}
+
+@keyframes fish-swim {
+    from { transform: translateX(0); }
+    to { transform: translateX(125vw); }
+}
+
+@keyframes fish-swim-back {
+    from { transform: translateX(125vw); }
+    to { transform: translateX(0); }
 }
 
 /* message box styling */
@@ -110,6 +224,7 @@ body {
 
 .message-zone.active {
     height: calc(100dvh - 160px);
+    min-height: 300px;
     animation: fade-in 0.5s;
 }
 
@@ -138,7 +253,7 @@ body {
 .msg { white-space: pre-wrap; }
 
 .message-zone button:disabled { opacity: 0.5; cursor: not-allowed; }
-.message-zone button:disabled:hover { background-color: #11212D; color: white; }
+.message-zone button:disabled:hover { background-color: var(--color-sage); color: var(--color-deep); }
 
 .row {
     display: flex;
@@ -160,24 +275,25 @@ body {
 .row .name {
     font-size: 12px;
     font-weight: bold;
-    color: #555;
+    color: var(--color-blue);
     margin-bottom: 2px;
 }
 
 .row.user .msg {
-    background: #11212D;
-    color: white;
+    background: var(--color-secondary);
+    color: var(--color-cream);
 }
 
 .row.ai .msg {
-    background: #CCD0CF;
-    color: #11212D;
+    background: var(--color-blue);
+    color: var(--color-cream);
+    border: 1px solid var(--color-secondary);
 }
 
 .offline-banner {
     padding: 8px 20px;
-    background: #fff3cd;
-    color: #5c4400;
+    background: var(--color-sand);
+    color: var(--color-deep);
     font-family: verdana;
     font-size: 14px;
     text-align: center;
@@ -226,6 +342,18 @@ body {
     }
 }
 
+@media (prefers-reduced-motion: reduce) {
+    .fish {
+        animation: none;
+        left: auto;
+        right: 8%;
+    }
+
+    .fish-two {
+        right: 55%;
+    }
+}
+
 .row.ai .msg { white-space: normal; }
 
 .row.ai .msg p { margin: 0 0 8px; }
@@ -239,7 +367,7 @@ body {
 .row.ai .msg code {
     font-family: ui-monospace, Consolas, monospace;
     font-size: 0.9em;
-    background: rgba(17, 33, 45, 0.1);
+    background: rgba(13, 27, 42, 0.12);
     padding: 1px 4px;
     border-radius: 4px;
 }
@@ -247,8 +375,8 @@ body {
 .row.ai .msg pre {
     margin: 0 0 8px;
     padding: 10px;
-    background: #11212D;
-    color: #fff;
+    background: var(--color-deep);
+    color: var(--color-cream);
     border-radius: 6px;
     overflow-x: auto;
 }

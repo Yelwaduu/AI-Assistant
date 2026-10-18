@@ -1,9 +1,9 @@
-const CACHE = "ai-assistant-v1";
+const CACHE = "ai-assistant-v6";
 
 const SHELL = [
   "/",
-  "/static/PracticeStyle.css",
-  "/static/Practice.js",
+  "/static/PracticeStyle.css?v=6",
+  "/static/Practice.js?v=2",
   "/static/manifest.json",
   "/static/img/icon-192.png",
   "/static/img/icon-512.png",

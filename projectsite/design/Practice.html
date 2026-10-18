@@ -4,15 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="Theme-color" content="#11212D">
+    <meta name="Theme-color" content="#0D1B2A">
     <link rel="manifest" href="{% static 'manifest.json' %}">
     <meta name="csrf-token" content="{{ csrf_token }}">
     <title>Deep Dive</title>
-    <link rel="stylesheet" href="{%static 'PracticeStyle.css' %}">
+    <link rel="stylesheet" href="{% static 'PracticeStyle.css' %}?v=6">
     <link rel="icon" type="image/x-icon" href="{% static 'img/icon-192.png' %}">
 
 </head>
 <body>
+<div class="fish-background" aria-hidden="true">
+    <svg class="fish fish-one" viewBox="0 0 120 60">
+        <path d="M18 30C34 8 72 8 91 30 72 52 34 52 18 30Zm73 0 25-20v40L91 30Z" />
+        <circle cx="35" cy="26" r="2.5" />
+    </svg>
+    <svg class="fish fish-two" viewBox="0 0 120 60">
+        <g transform="translate(120 0) scale(-1 1)">
+            <path d="M18 30C34 8 72 8 91 30 72 52 34 52 18 30Zm73 0 25-20v40L91 30Z" />
+            <circle cx="35" cy="26" r="2.5" />
+        </g>
+    </svg>
+    <svg class="fish fish-three" viewBox="0 0 120 60">
+        <path d="M18 30C34 8 72 8 91 30 72 52 34 52 18 30Zm73 0 25-20v40L91 30Z" />
+        <circle cx="35" cy="26" r="2.5" />
+    </svg>
+</div>
 <div class="nav-container">
     <div class="nav-zone">
         <button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
@@ -33,11 +49,18 @@
 
         <div class="message-box" id="message-box"></div>
         <div class="input-zone">
-            <input type='text' id='input' placeholder="Start the day with a question">
+            <div class="input-wrapper">
+                <input type='text' id='input' placeholder="Start the day with a question">
+                <button type="button" class="clear-btn" id="clear-btn" aria-label="Clear message" title="Clear message">
+                    <svg aria-hidden="true" viewBox="0 0 16 16">
+                        <path d="M3 5h10M6 5V3h4v2m2 0-.6 8H4.6L4 5m3 2v4m2-4v4" />
+                    </svg>
+                </button>
+            </div>
             <button id="send-btn">Send</button>
         </div>
     </div>
 </div>
-<script src="{% static 'Practice.js' %}"></script>
+<script src="{% static 'Practice.js' %}?v=2"></script>
 </body>
 </html>

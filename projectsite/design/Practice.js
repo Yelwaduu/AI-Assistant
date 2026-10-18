@@ -2,6 +2,7 @@ const input = document.getElementById("input");
 const box = document.getElementById("message-box");
 const zone = document.getElementById("message-zone");
 const sendbtn = document.getElementById("send-btn");
+const clearbtn = document.getElementById("clear-btn");
 const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
 const banner = document.getElementById("offline-banner");
 const chatHistory = [];
@@ -136,6 +137,10 @@ async function sendMessage() {
 }
 
 sendbtn.addEventListener('click', sendMessage);
+clearbtn.addEventListener("click", () => {
+    input.value = "";
+    input.focus();
+});
 input.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') sendMessage();
     })
