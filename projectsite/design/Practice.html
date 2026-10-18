@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Theme-color" content="#11212D">
+    <link rel="manifest" href="{% static 'manifest.json' %}">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <title>Deep Dive</title>
+    <link rel="stylesheet" href="{%static 'PracticeStyle.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'img/icon-192.png' %}">
+
+</head>
+<body>
+<div class="nav-container">
+    <div class="nav-zone">
+        <button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+    </svg></button>
+        <H2><b>Deep Dive</b></H2>
+    </div>
+</div>
+<div id="offline-banner" class="offline-banner" hidden>
+    You're offline. Reconnect to the internet to continue using Deep Dive
+</div>
+    
+<div class="message-container">
+    
+    <div class="message-zone" id="message-zone">
+        <H1>Deep Dive</H1>
+        <p>This is a simple practice website.</p>
+
+        <div class="message-box" id="message-box"></div>
+        <div class="input-zone">
+            <input type='text' id='input' placeholder="Start the day with a question">
+            <button id="send-btn">Send</button>
+        </div>
+    </div>
+</div>
+<script src="{% static 'Practice.js' %}"></script>
+</body>
+</html>
